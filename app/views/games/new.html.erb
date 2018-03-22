@@ -1,0 +1,19 @@
+<!-- <h1>Games#new</h1>
+<p>Find me in app/views/games/new.html.erb</p>
+ -->
+ <h1>New game</h1>
+
+<div class= "lettres">
+  <%@letters.each do |ele|%>
+    <div class="display-lettre"><%= ele.upcase%></div>
+  <% end %>
+</div>
+
+<div class="form">
+  <form action="/score"  method="post">
+     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <input id="input-text" type="text" name="games">
+    <input id="input-submit"  type="submit" value="play">
+  </form>
+</div>
+

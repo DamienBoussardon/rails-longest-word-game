@@ -1,0 +1,26 @@
+<!-- <h1>Games#score</h1>
+<p>Find me in app/views/games/score.html.erb</p> -->
+<h1>Result</h1>
+<p> Your word is:
+<strong class="ay"><%= @score %></strong>
+</p>
+<p id="inject"></p>
+
+
+
+<script>
+  const inject = document.querySelector("#inject");
+const search = document.querySelector(".ay").innerHTML;
+console.log(search);
+fetch(`https://wagon-dictionary.herokuapp.com/autocomplete/${search}`)
+  .then(response => response.json())
+  .then((data) => {
+    console.log(data.count);
+    if (data.count > 0) {
+      inject.insertAdjacentHTML("beforeend", `Your word exixt, your score is: <%=@sum%>`);
+      // console.log('<%=@sum%>')
+    } else {
+      inject.insertAdjacentHTML("beforeend", `Ỳour word doesn't exixt`);
+    }
+  });
+</script>
